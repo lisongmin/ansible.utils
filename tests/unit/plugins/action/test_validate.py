@@ -336,7 +336,7 @@ class TestValidate(TestCase):
         }
 
         result = self._plugin.run(
-            task_vars=dict(ansible_validate_jsonschema_suppress_output=["relative_schema"])
+            task_vars=dict(ansible_validate_jsonschema_suppress_output=["relative_schema"]),
         )
         error = result.get("errors", [])[0]
         self.assertIn("found", error)
