@@ -282,7 +282,11 @@ class Validate(ValidateBase):
 
                 suppress_fields = []
                 if suppress_output:
-                    suppress_fields = suppress_output if isinstance(suppress_output, list) else ["found", "relative_schema"]
+                    suppress_fields = (
+                        suppress_output
+                        if isinstance(suppress_output, list)
+                        else ["found", "relative_schema"]
+                    )
 
                 for validation_error in validation_errors:
                     if isinstance(validation_error, jsonschema.ValidationError):

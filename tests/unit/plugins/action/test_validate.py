@@ -308,7 +308,7 @@ class TestValidate(TestCase):
         }
 
         result = self._plugin.run(task_vars=None)
-        error = result.get('errors', [])[0]
+        error = result.get("errors", [])[0]
         self.assertIn("found", error)
         self.assertIn("relative_schema", error)
 
@@ -322,7 +322,7 @@ class TestValidate(TestCase):
         }
 
         result = self._plugin.run(task_vars=dict(ansible_validate_jsonschema_suppress_output=True))
-        error = result.get('errors', [])[0]
+        error = result.get("errors", [])[0]
         self.assertNotIn("found", error)
         self.assertNotIn("relative_schema", error)
 
@@ -335,7 +335,9 @@ class TestValidate(TestCase):
             "criteria": CRITERIA_FORMAT_SUPPORT_CHECK,
         }
 
-        result = self._plugin.run(task_vars=dict(ansible_validate_jsonschema_suppress_output=['relative_schema']))
-        error = result.get('errors', [])[0]
+        result = self._plugin.run(
+            task_vars=dict(ansible_validate_jsonschema_suppress_output=["relative_schema"])
+        )
+        error = result.get("errors", [])[0]
         self.assertIn("found", error)
         self.assertNotIn("relative_schema", error)
